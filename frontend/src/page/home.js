@@ -13,29 +13,57 @@ class Home extends React.Component {
       this.state={
         courses: [],
         Item: [],
-        inputSearching: ""
+        inputSearching: "A"
       }
     this.getSearching = this.getSearching.bind(this)
     this.getCourses = this.getCourses.bind(this)
     this.getFromFirebase = this.getFromFirebase.bind(this)
     this.alertTest = this.alertTest.bind(this)
+    }
     // this.InitItem = this.InitItem.bind(this)
-}   
-  
+// }   
+//   shouldComponentUpdate(nextProps, nextState){
+//   if(nextState.inputSearching === this.state.inputSearching){
+//     return false
+//     }
+//   else return true
+//   } 
+//   componentWillUpdate(nextProps, nextState){
+//     this.getFromFirebase()
+//   }
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.inputSearching !== this.state.inputSearching){
+      this.getFromFirebase()  
+    }
+  }
+  componentDidMount() {   
+    this.initItemFromFirebase()
+  }
 
-  componentDidMount() {
-    this.getFromFirebase()
+  initItemFromFirebase(){
+    var self = this
+    let app = this.props.db.database().ref('courses');
+    app.once('value').then(function(snapshot) {
+            var c = snapshot.val()            
+            if(c !== null){
+              self.getCourses(c)
+            }
+        });
   }
 
   getFromFirebase(){
     var self = this
     let app = this.props.db.database().ref('courses');
-    app.once('value').then(function(snapshot) {
-        var c = snapshot.val()
-        // console.log(snapshot.val())  
-        self.getCourses(c)
-      });
-    
+   
+    app.orderByKey().startAt(self.state.inputSearching).endAt(self.state.inputSearching+"\uf8ff").on("value", function(snapshot) {
+      var c = snapshot.val()
+        if(c !== null && self.state.inputSearching !== ''){  
+          self.getCourses(c)
+        }
+        else if(self.state.inputSearching === ''){
+          self.initItemFromFirebase()
+        }
+    });
   }
 
   getCourses(value){
@@ -50,6 +78,12 @@ class Home extends React.Component {
       inputSearching: input
     })
   }
+
+  clearItem(){
+    this.setState({ courses: [] })
+  }
+
+  
 
   // InitItem(){
   //   var maxItem = 10
@@ -105,11 +139,10 @@ class Home extends React.Component {
       
         //<button onClick={this.alertTest}></button>
       }
+      
       {Object.keys(this.state.courses).map(item => (<Item courses_name={item} />))}
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+
+      
       </div>
     );
   }
