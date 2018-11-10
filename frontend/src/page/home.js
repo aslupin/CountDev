@@ -5,6 +5,7 @@ import Header from '../components/header'
 import Search from '../components/search'
 import Item from '../components/item'
 import Navbar from '../components/navbar'
+import Modal from 'react-modal'
 class Home extends React.Component {
   
   
@@ -13,12 +14,15 @@ class Home extends React.Component {
       this.state={
         courses: [],
         Item: [],
-        inputSearching: "A"
+        inputSearching: "A",
+        showModal: false,
+        addTime: '00:00'
       }
     this.getSearching = this.getSearching.bind(this)
     this.getCourses = this.getCourses.bind(this)
     this.getFromFirebase = this.getFromFirebase.bind(this)
     this.alertTest = this.alertTest.bind(this)
+    this.callbackGetTimeAdding = this.callbackGetTimeAdding.bind(this)
     }
     // this.InitItem = this.InitItem.bind(this)
 // }   
@@ -63,6 +67,7 @@ class Home extends React.Component {
         else if(self.state.inputSearching === ''){
           self.initItemFromFirebase()
         }
+        else self.clearItem()
     });
   }
 
@@ -83,6 +88,11 @@ class Home extends React.Component {
     this.setState({ courses: [] })
   }
 
+  callbackGetTimeAdding(callback){
+    this.setState({
+      addTime: callback
+    })
+  }
   
 
   // InitItem(){
@@ -118,9 +128,6 @@ class Home extends React.Component {
   //  });
   }
   
-  
-
-
 
   
   render() {
@@ -140,9 +147,12 @@ class Home extends React.Component {
         //<button onClick={this.alertTest}></button>
       }
       
-      {Object.keys(this.state.courses).map(item => (<Item courses_name={item} />))}
-
-      
+      {Object.keys(this.state.courses).map(item => (
+        <Item 
+        courses_name={item} 
+        callbackGetTimeAddingProps={this.callbackGetTimeAdding.bind(this)} 
+        />))}
+        {this.state.AddTime}
       </div>
     );
   }
