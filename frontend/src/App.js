@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     const bodyNew = {
       fontFamily: 'Mali',
-      // backgroundImage: 'url('+Bg+')',
+      backgroundImage: 'url('+Bg+')',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
       backgroundSize: 'cover',

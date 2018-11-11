@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import SearchBoxImage from '../assets/img/search_box.png'
-import SearchIconImage from '../assets/img/search.png'
 import style from 'styled-components'
 class Search extends Component{
     constructor(props){

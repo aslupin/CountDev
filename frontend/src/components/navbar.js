@@ -2,7 +2,6 @@ import React from 'react'
 import style from 'styled-components'
 import Header from '../components/header'
 import Search from '../components/search'
-import BgHeader from '../assets/img/color_draw.png'
 class Navbar extends React.Component {
   constructor(props){
     super(props)    
@@ -28,7 +27,7 @@ myCallBackItemListening(itemSearch){
   
   render() {
     const Wrapper = style.div`
-    background-image: url(${BgHeader});
+    
     background-repeat: no-repeat;
     background-position: center;
     background-size: 670px;
