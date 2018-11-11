@@ -2,7 +2,7 @@ import React from 'react'
 import style from 'styled-components'
 import Header from '../components/header'
 import Search from '../components/search'
-import ClockIcon from '../assets/img/time.png'
+
 class Navbar extends React.Component {
   constructor(props){
     super(props)    
