@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage" : "http://aslupin.github.io/CountDev",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
@@ -13,10 +14,13 @@
     "styled-components": "^4.0.3"
   },
   "scripts": {
+    
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
