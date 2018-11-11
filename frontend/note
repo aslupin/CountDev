@@ -1,1 +1,0 @@
-curl 'https://ywchw-221815.firebaseio/users/jack/name.json?access_token=CREDENTIAL'
