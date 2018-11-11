@@ -235,8 +235,9 @@ class Home extends React.Component {
       <Navbar getInputSearching={this.getSearching.bind(this)} />
       <SpacePadding />
       <ItemAdd getNameCreate={this.newCourse.bind(this)}/>
-      {Object.keys(this.state.courses).map(item => (
+      {Object.keys(this.state.courses).map((item,k) => (
         <Item 
+        key={k}
         getAddTimingFromItem={this.callbackGetTimeAdding.bind(this)} 
         listenNameAdded={this.listenAddTiming.bind(this)}
         courses_name={item}

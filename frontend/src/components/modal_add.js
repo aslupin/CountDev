@@ -79,7 +79,7 @@ class ModalAdd extends Component{
     return(
       
         <div>
-          <Modal isOpen={this.state.showModal} onRequestClose={this.hideModal} >
+          <Modal isOpen={this.state.showModal} onRequestClose={this.hideModal} ariaHideApp={false} >
 
             <p style={{textAlign: 'right', paddingRight:'20px', paddingTop:'10px', fontSize: '30px', cursor:'default'}} onClick={this.hideModal} >x</p>
             <p style={{fontSize: '20px'}}>ใส่ชื่อหัวข้อใหม่ที่ต้องการ</p>

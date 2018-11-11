@@ -66,7 +66,7 @@ class Modal extends Component{
     return(
       
         <div>
-          <Modal isOpen={this.state.showModal} onRequestClose={this.hideModal} >
+          <Modal isOpen={this.state.showModal} onRequestClose={this.hideModal} ariaHideApp={false} >
 
             <p style={{textAlign: 'right', paddingRight:'20px', paddingTop:'10px', fontSize: '30px', cursor:'default'}} onClick={this.hideModal} >x</p>
             <p style={{fontSize: '20px'}}>ใส่เวลาในการเรียนรู้ของหัวข้อนี้</p>
