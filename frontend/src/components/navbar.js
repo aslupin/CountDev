@@ -2,6 +2,7 @@ import React from 'react'
 import style from 'styled-components'
 import Header from '../components/header'
 import Search from '../components/search'
+import ClockIcon from '../assets/img/time.png'
 class Navbar extends React.Component {
   constructor(props){
     super(props)    
@@ -28,9 +29,6 @@ myCallBackItemListening(itemSearch){
   render() {
     const Wrapper = style.div`
     
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 670px;
     padding-top: -50px;
     top: 0px;
     position: fixed;
@@ -43,9 +41,10 @@ myCallBackItemListening(itemSearch){
 
     
     return (
+
     <div>
     <Wrapper>
-        <Header />
+    <Header />
         <Search 
           itemSearch={this.state.ItemSearch} 
           inputValue={this.myCallBackItemListening.bind(this)} 

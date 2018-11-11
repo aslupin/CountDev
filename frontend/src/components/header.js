@@ -1,5 +1,6 @@
 import React from 'react'
 import style from 'styled-components'
+import ClockIcon from '../assets/img/time.png'
 const Header = style.p`
     font-size: 50px;
     font-weight: normal;
@@ -8,9 +9,12 @@ const Header = style.p`
     padding-top: -20px;
     top: 0px;
 `
+const Icon = style.img`
+width: 50px;
+height: 50px`
 export default () => (
     <div>
-        <Header> Count DEV </Header>
+        <Header> Count DEV <Icon src={ClockIcon} /></Header>
     </div>
 )
 
